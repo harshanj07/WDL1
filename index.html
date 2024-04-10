@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Form</title>
+</head>
+<body>
+<form action="submit.php" method="POST" onsubmit="return validatee()">
+<div style="display:flex;">
+<label for="name">Name :</label>
+<input type="text" name="name" id="name" placeholder="Enter your username">
+</div>
+<p id="nameerr" style="color:red;"></p>
+<div style="display:flex;"> AD
+<label for="email">Email :</label>
+<input type="text" name="Email" id="Email" placeholder="Enter your Email">
+</div>
+<p id="emerr" style="color:red;"></p>
+<div style="display:flex;">
+<label for="phno">Phone<br> Number :</label>
+<input type="text" name="phno" id="phno" placeholder="Enter your Phone Number">
+</div>
+<p id="pherr" style="color:red;"></p>
+<div style="display:flex;">
+<label for="addr">Address :</label>
+<input type="text" style="height:50px;" name="addr" id="addr" placeholder="Enter your Address">
+</div>
+<p id="adderr" style="color:red;"></p>
+<button type="submit">Submit</button>
+</form>
+<script>
+function validatee(){
+const name=document.getElementById('name').value;
+const email=document.getElementById('Email').value;
+const phoneno=document.getElementById('phno').value;
+const address=document.getElementById('addr').value;
+const nameerror=document.getElementById('nameerr');
+const emailerror=document.getElementById('emerr');
+const phoneerror=document.getElementById('pherr');
+const addresserror=document.getElementById('adderr');
+let result=true;
+const nameregex=/^[a-zA-Z]{3,15}$/;
+const emailregex=/^[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]+$/;
+const phoneregex=/^[0-9]{10}$/;
+if(!nameregex.test(name)){
+nameerror.textContent="Username Must contain 3 to 15 Alphabets only";
+result=false;
+}else{
+nameerror.textContent="";
+}
+if(!emailregex.test(email)){
+emailerror.textContent="Enter a valid Email";
+result=false;
+}else{
+emailerror.textContent=""
+}
+if(!phoneregex.test(phoneno)){
+phoneerror.textContent="Enter a valid Phone Number";
+result=false;
+}else{
+phoneerror.textContent="";
+}
+if(address==""){
+addresserror.textContent="Address Cannot be Empty";
+result=false;
+}else{
+addresserror.textContent="";
+}
+return result;
+}
+</script>
+</body>
+</html>
